@@ -6,6 +6,7 @@ public class TreeNode {
 	private TreeNode leftChild;
 	private TreeNode rightChild;
 
+	// 1. Insert
 	public void insert(int data) {
 		if (data == this.data) {
 			return;
@@ -28,6 +29,18 @@ public class TreeNode {
 
 	}
 
+	// 2. Get
+	public TreeNode get(int value) {
+		if (value == data) {
+			return this;
+		} else if (value < data) {
+			return leftChild.get(value);
+		} else {
+			return rightChild.get(value);
+		}
+	}
+
+	// 3a) Inorder Traversal
 	public void inOrderTraversal() {
 		if (leftChild != null) {
 			leftChild.inOrderTraversal();
@@ -37,33 +50,24 @@ public class TreeNode {
 			rightChild.inOrderTraversal();
 		}
 	}
-	
-	public TreeNode get(int value) {
-		if(value == data) {
-			return this;
-		}
-		else if(value < data) {
-			return leftChild.get(value);
-		}
-		else {
-			return rightChild.get(value);
-		}
-	}
-	
+
+	// 4. Get minimum value
 	public int getMin() {
-		if(leftChild != null) {
+		if (leftChild != null) {
 			return leftChild.getMin();
 		}
 		return data;
 	}
-	
+
+	// 5. Get maximum value
 	public int getMax() {
-		if(rightChild != null) {
+		if (rightChild != null) {
 			return rightChild.getMax();
 		}
 		return data;
 	}
 
+	// Getters and Setters
 	public int getData() {
 		return data;
 	}
